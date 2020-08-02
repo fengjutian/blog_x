@@ -1,7 +1,7 @@
 import React from 'react';
 import './Login.css';
-import { Layout } from 'antd';
-const { Header, Footer, Content, Form, Input, Button, Checkbox } = Layout;
+import { Layout, Form, Input, Button, Checkbox } from 'antd';
+const { Header, Footer, Content } = Layout;
 
 const layout = {
     labelCol: {
@@ -18,6 +18,11 @@ const tailLayout = {
     },
 };
 class Login extends React.Component {
+
+    loginFun() {
+        console.log('login',  this.props)
+    
+    }
     
     render() {
         const onFinish = values => {
@@ -31,7 +36,7 @@ class Login extends React.Component {
         return (<Layout>
                     <Header className='top'></Header>
                     <Content className='ctx'>
-                        <div class='input-box'>
+                        <div className='input-box'>
                         <Form
                             {...layout}
                             name="basic"
@@ -42,7 +47,7 @@ class Login extends React.Component {
                             onFinishFailed={onFinishFailed}
                             >
                             <Form.Item
-                                label="Username"
+                                label="用户名"
                                 name="username"
                                 rules={[
                                 {
@@ -55,7 +60,7 @@ class Login extends React.Component {
                             </Form.Item>
 
                             <Form.Item
-                                label="Password"
+                                label="密码"
                                 name="password"
                                 rules={[
                                 {
@@ -68,18 +73,16 @@ class Login extends React.Component {
                             </Form.Item>
 
                             <Form.Item {...tailLayout} name="remember" valuePropName="checked">
-                                <Checkbox>Remember me</Checkbox>
+                                <Checkbox>记住我</Checkbox>
                             </Form.Item>
 
                             <Form.Item {...tailLayout}>
-                                <Button type="primary" htmlType="submit">
-                                Submit
-                                </Button>
+                            <Button type="primary" htmlType="submit"  onClick={() => this.loginFun()}>提交</Button>
                             </Form.Item>
                         </Form>
                         </div>
                     </Content>
-                    <Footer class='bottom'>Footer</Footer>
+                    <Footer className='bottom'>Footer</Footer>
                 </Layout>);
     }
 }
